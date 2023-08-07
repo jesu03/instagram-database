@@ -7,7 +7,5 @@ import com.springboot.instagram.model.UserPost;
 
 @Repository
 public interface UserPostRepository extends JpaRepository<UserPost,String>{
-            public UserPost updateId(){
-                
-            }
+            
 }
