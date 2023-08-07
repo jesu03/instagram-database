@@ -10,10 +10,10 @@ import jakarta.persistence.OneToOne;
 public class UserPost {
     @Id
     private String userpostid;
-     private String caption;
-     private LocalDate createdat;
-     @OneToOne 
-     private PostFile postFile;
+    private String caption;
+    private LocalDate createdat;
+    @OneToOne 
+    private PostFile postFile;
      
     public UserPost(String userpostid, String caption, LocalDate createdat, PostFile postFile) {
         this.userpostid = userpostid;
