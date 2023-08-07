@@ -14,6 +14,7 @@ public class UserPost {
      private LocalDate createdat;
      @OneToOne 
      private PostFile postFile;
+     
     public UserPost(String userpostid, String caption, LocalDate createdat, PostFile postFile) {
         this.userpostid = userpostid;
         this.caption = caption;
