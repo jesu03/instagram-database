@@ -28,7 +28,7 @@ public class UserRelationController {
         return userRelationRepository.findAll();
     }
 
-    @PostMapping(value="/")
+    @PostMapping("/post")
     public List<UserRelation> persist(@RequestBody UserRelation userRelation) {
          userRelationRepository.save(userRelation);
          return userRelationRepository.findAll();
@@ -38,7 +38,7 @@ public class UserRelationController {
     public UserRelation get(@RequestParam("userrelationid") String userrelationid){
         return userRelationRepository.findById(userrelationid).get();
     }
-    @PutMapping(value={"/userrelationid"})
+    @PutMapping(value="/put/{userrelationid}")
     public List<UserRelation> put(@PathVariable String userrelationid ,@RequestBody UserRelation userRelation){
         if(userRelationRepository.existsById(userrelationid)){
             userRelationRepository.deleteById(userrelationid);
