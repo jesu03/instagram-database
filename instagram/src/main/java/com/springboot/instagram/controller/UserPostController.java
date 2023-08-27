@@ -23,7 +23,7 @@ public class UserPostController {
     @Autowired
     private UserPostRepository userPostRepository;
     
-    @PostMapping(value="/")
+    @PostMapping(value="/post")
     public UserPost persist(@RequestBody UserPost userPost){
         userPostRepository.save(userPost);
         return userPostRepository.findById(userPost.getUserpostid()).get();
@@ -36,7 +36,7 @@ public class UserPostController {
     public UserPost get(@RequestParam("userpostid") String userpostid){
         return userPostRepository.findById(userpostid).get();
     }
-    @PutMapping(value="/{userpostid}")
+    @PutMapping(value="/put/{userpostid}")
     public List<UserPost> put(@PathVariable String userpostid,@RequestBody UserPost userPost){
             if(userPostRepository.existsById(userpostid)){
                 userPostRepository.deleteById(userpostid);
