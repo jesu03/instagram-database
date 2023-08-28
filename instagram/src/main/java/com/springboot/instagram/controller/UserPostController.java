@@ -44,7 +44,7 @@ public class UserPostController {
             }
             return userPostRepository.findAll();
     }
-    @DeleteMapping(value="/{userpostid}")
+    @DeleteMapping(value="/delete/{userpostid}")
     public List<UserPost> delete(@PathVariable String userpostid){
         userPostRepository.deleteById(userpostid);
         return userPostRepository.findAll();
