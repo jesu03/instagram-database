@@ -23,7 +23,7 @@ public class UserPostController {
     @Autowired
     private UserPostRepository userPostRepository;
     
-    @PostMapping(value="/post")
+    @PostMapping("/post")
     public UserPost persist(@RequestBody UserPost userPost){
         userPostRepository.save(userPost);
         return userPostRepository.findById(userPost.getUserpostid()).get();
