@@ -23,22 +23,22 @@ public class PostFileController {
        @Autowired
        private PostFileRepository postFileRepository;
        
-       @PostMapping(value="/")
+       @PostMapping("/post")
        public List<PostFile> perisist(@RequestBody PostFile postFile){
         postFileRepository.save(postFile);
         return postFileRepository.findAll();
        }
-       @GetMapping(value="/")
+       @GetMapping(value="/getall")
        public List<PostFile> getAll(){
         return postFileRepository.findAll();
        }
 
-       @GetMapping(value="/{postid}")
+       @GetMapping(value="/get/{postid}")
        public Optional<PostFile> get(@RequestParam("postid") String postid){
         return postFileRepository.findById(postid);
        }
        
-       @PutMapping(value="/{postid}")
+       @PutMapping(value="/put/{postid}")
        public List<PostFile> put(@PathVariable String postid,@RequestBody PostFile postFile){
             if(postFileRepository.existsById(postid)){
                 postFileRepository.deleteById(postid);
@@ -47,7 +47,7 @@ public class PostFileController {
             return postFileRepository.findAll();
        }
 
-       @DeleteMapping(value="/{postid}")
+       @DeleteMapping(value="/delete/{postid}")
        public List<PostFile> delete(@PathVariable String postid){
              postFileRepository.deleteById(postid);
              return postFileRepository.findAll();
