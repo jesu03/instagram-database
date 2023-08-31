@@ -27,10 +27,10 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @PostMapping(value="/")
-    public User persist(@RequestBody User user){
+    @PostMapping("/post")
+    public List<User> persist(@RequestBody User user){
          userRepository.save(user);
-         return userRepository.findById(user.getUserid()).get();
+         return userRepository.findAll();
     }
     
 

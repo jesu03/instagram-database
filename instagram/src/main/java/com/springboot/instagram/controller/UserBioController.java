@@ -22,22 +22,22 @@ public class UserBioController {
     @Autowired
     private UserBioRepository userBioRepository;
 
-    @GetMapping(value="/")
+    @GetMapping(value="/getall")
     public List<UserBio> getAll(){
         return userBioRepository.findAll();
     }
 
-    @PostMapping(value="/")
+    @PostMapping("/post")
     public List<UserBio> persist(@RequestBody UserBio userBio){
          userBioRepository.save(userBio);
          return userBioRepository.findAll();
     }
     
-    @GetMapping(value="/{userbioid}")
+    @GetMapping(value="/get/{userbioid}")
     public UserBio get(@RequestParam("userbioid") String userbioid){
         return userBioRepository.findById(userbioid).get();
     }
-    @PutMapping(value="/{userbioid}")
+    @PutMapping(value="/put/{userbioid}")
     public List<UserBio> put(@PathVariable String userbioid,@RequestBody UserBio userbio){
         if(userBioRepository.existsById(userbioid)){
             userBioRepository.deleteById(userbioid);
@@ -45,7 +45,7 @@ public class UserBioController {
         }
         return userBioRepository.findAll();
     }
-    @DeleteMapping(value="/{userbioid}")
+    @DeleteMapping(value="/delete/{userbioid}")
     public List<UserBio> delete(@PathVariable String userbioid){
          userBioRepository.deleteById(userbioid);
          return userBioRepository.findAll();
