@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
 @Entity
-public class UserPost {
+public class UserPost{
     @Id
     private String userpostid;
     private String caption;

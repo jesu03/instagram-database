@@ -23,10 +23,10 @@ public class UserPostController {
     @Autowired
     private UserPostRepository userPostRepository;
     
-    @PostMapping("/post")
-    public UserPost persist(@RequestBody UserPost userPost){
+    @PostMapping("/posts")
+    public List<UserPost> persist(@RequestBody UserPost userPost){
         userPostRepository.save(userPost);
-        return userPostRepository.findById(userPost.getUserpostid()).get();
+        return userPostRepository.findAll();
     }
     @GetMapping(value="/")
     public List<UserPost> getAll(){
