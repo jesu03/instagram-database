@@ -34,7 +34,7 @@ public class UserRelationController {
          return userRelationRepository.findAll();
     }
     
-    @GetMapping(value={"/userrelationid"})
+    @GetMapping(value={"getall/userrelationid"})
     public UserRelation get(@RequestParam("userrelationid") String userrelationid){
         return userRelationRepository.findById(userrelationid).get();
     }
@@ -46,7 +46,7 @@ public class UserRelationController {
         }
         return userRelationRepository.findAll();
     }
-    @DeleteMapping(value="/{userrelationid}")
+    @DeleteMapping(value="/delete/{userrelationid}")
     public List<UserRelation> delete(@PathVariable String userrelationid){
         userRelationRepository.deleteById(userrelationid);
         return userRelationRepository.findAll();
