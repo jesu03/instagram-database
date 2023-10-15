@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,5 +29,14 @@ public class UsersplController {
     @GetMapping("/get")
     public List<Userspl> getAll(){
             return usersplRepository.findAll();
+    }
+
+    @PutMapping("/put/{usersplid}")
+    public List<Userspl> update(@PathVariable String usersplid,@RequestBody Userspl userspl){
+          if(usersplRepository.existsById(usersplid)){
+                usersplRepository.deleteById(usersplid);
+                usersplRepository.save(userspl);
+          }
+          return usersplRepository.findAll();
     }
 }
