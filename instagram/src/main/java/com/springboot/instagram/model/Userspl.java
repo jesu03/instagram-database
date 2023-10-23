@@ -4,22 +4,24 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Userspl {
     @Id
     private String usersplid;
     private Integer followinglist;
-    private Integer newsfeedid;
+    @OneToOne
+    private NewsFeeds newsfeeds;
     private LocalDate lastmodified;
     private LocalDate newslastfeedid;
     public Userspl() {
     }
-    public Userspl(String usersplid, Integer followinglist, Integer newsfeedid, LocalDate lastmodified,
+    public Userspl(String usersplid, Integer followinglist, NewsFeeds newsfeeds, LocalDate lastmodified,
             LocalDate newslastfeedid) {
         this.usersplid = usersplid;
         this.followinglist = followinglist;
-        this.newsfeedid = newsfeedid;
+        this.newsfeeds = newsfeeds;
         this.lastmodified = lastmodified;
         this.newslastfeedid = newslastfeedid;
     }
@@ -35,11 +37,11 @@ public class Userspl {
     public void setFollowinglist(Integer followinglist) {
         this.followinglist = followinglist;
     }
-    public Integer getNewsfeedid() {
-        return newsfeedid;
+    public NewsFeeds getNewsfeeds() {
+        return newsfeeds;
     }
-    public void setNewsfeedid(Integer newsfeedid) {
-        this.newsfeedid = newsfeedid;
+    public void setNewsfeeds(NewsFeeds newsfeeds) {
+        this.newsfeeds = newsfeeds;
     }
     public LocalDate getLastmodified() {
         return lastmodified;
@@ -53,5 +55,6 @@ public class Userspl {
     public void setNewslastfeedid(LocalDate newslastfeedid) {
         this.newslastfeedid = newslastfeedid;
     }
+    
     
 }
