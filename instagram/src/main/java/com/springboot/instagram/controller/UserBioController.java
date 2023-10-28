@@ -14,41 +14,41 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.instagram.model.UserBio;
-import com.springboot.instagram.repository.UserBioRepository;
+import com.springboot.instagram.services.UserBioService;
 
 @RestController
 @RequestMapping("/api/userbios")
 public class UserBioController {
     @Autowired
-    private UserBioRepository userBioRepository;
+    private UserBioService userBioService;
 
     @GetMapping(value="/getall")
     public List<UserBio> getAll(){
-        return userBioRepository.findAll();
+        return userBioService.findAll();
     }
 
     @PostMapping("/post")
     public List<UserBio> persist(@RequestBody UserBio userBio){
-         userBioRepository.save(userBio);
-         return userBioRepository.findAll();
+        userBioService.save(userBio);
+         return userBioService.findAll();
     }
     
     @GetMapping(value="/get/{userbioid}")
     public UserBio get(@RequestParam("userbioid") String userbioid){
-        return userBioRepository.findById(userbioid).get();
+        return userBioService.findById(userbioid).get();
     }
     @PutMapping(value="/put/{userbioid}")
     public List<UserBio> put(@PathVariable String userbioid,@RequestBody UserBio userbio){
-        if(userBioRepository.existsById(userbioid)){
-            userBioRepository.deleteById(userbioid);
-            userBioRepository.save(userbio);
+        if(userBioService.existsById(userbioid)){
+            userBioService.deleteById(userbioid);
+            userBioService.save(userbio);
         }
-        return userBioRepository.findAll();
+        return userBioService.findAll();
     }
     @DeleteMapping(value="/delete/{userbioid}")
     public List<UserBio> delete(@PathVariable String userbioid){
-         userBioRepository.deleteById(userbioid);
-         return userBioRepository.findAll();
+         userBioService.deleteById(userbioid);
+         return userBioService.findAll();
     }
     
 }
