@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
 import org.springframework.stereotype.Service;
 
+import com.springboot.instagram.exception.UserException;
 import com.springboot.instagram.model.User;
 import com.springboot.instagram.repository.UserRepository;
 
@@ -27,14 +28,25 @@ public class UserService implements UserRepository{
     }
 
     @Override
-    public Optional<User> findById(String id) {
-        return userRepository.findById(id);
+    public Optional<User> findById(String id){
+        if(userRepository.existsById(id)){
+            return userRepository.findById(id);
+        }
+        else{
+            throw new UserException("userid is incorret please provide a correct one");
+        }
+        
     }
 
 
     @Override
-    public void deleteById(String id) {
-        userRepository.deleteById(id);
+    public void deleteById(String id){
+        if(userRepository.existsById(id)){
+            userRepository.deleteById(id);
+        }
+        else{
+            throw new UserException("userid is incorret please provide a correct one");
+        }
     }
 
     @Override
@@ -47,8 +59,13 @@ public class UserService implements UserRepository{
         return userRepository.existsById(id);
     }
 
-    public User updateById(String userid,User user){
-        return userRepository.save(user);
+    public User updateById(String userid,User user) throws Exception{
+        if(userRepository.existsById(userid)){
+            return userRepository.save(user);
+        }
+        else{
+            throw new UserException("userid is incorret please provide a correct one");
+        }
     }
 
 
