@@ -13,39 +13,39 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.springboot.instagram.model.UserPost;
-import com.springboot.instagram.repository.UserPostRepository;
+import com.springboot.instagram.services.UserPostService;
 
 @RestController
 @RequestMapping("/api/userposts")
 public class UserPostController {
     @Autowired
-    private UserPostRepository userPostRepository;
+    private UserPostService userPostService;
     
     @PostMapping("/post")
     public List<UserPost> persist(@RequestBody UserPost userPost){
-        userPostRepository.save(userPost);
-        return userPostRepository.findAll();
+        userPostService.save(userPost);
+        return userPostService.findAll();
     }
     @GetMapping(value="/")
     public List<UserPost> getAll(){
-        return userPostRepository.findAll();
+        return userPostService.findAll();
     }
     @GetMapping(value="/{userpostid}")
     public UserPost get(@RequestParam("userpostid") String userpostid){
-        return userPostRepository.findById(userpostid).get();
+        return userPostService.findById(userpostid).get();
     }
     @PutMapping(value="/put/{userpostid}")
     public List<UserPost> put(@PathVariable String userpostid,@RequestBody UserPost userPost){
-            if(userPostRepository.existsById(userpostid)){
-                userPostRepository.deleteById(userpostid);
-                userPostRepository.save(userPost);
+            if(userPostService.existsById(userpostid)){
+                userPostService.deleteById(userpostid);
+                userPostService.save(userPost);
             }
-            return userPostRepository.findAll();
+            return userPostService.findAll();
     }
     @DeleteMapping(value="/delete/{userpostid}")
     public List<UserPost> delete(@PathVariable String userpostid){
-        userPostRepository.deleteById(userpostid);
-        return userPostRepository.findAll();
+        userPostService.deleteById(userpostid);
+        return userPostService.findAll();
     }
 
 }
