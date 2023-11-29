@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.instagram.model.NewsFeeds;
-import com.springboot.instagram.repository.NewsFeedsRepository;
+import com.springboot.instagram.services.NewsFeedsService;
 
 @RestController
 @RequestMapping("/api/newsfeeds")
 public class NewsFeedsController {
 
     @AutoWired
-    private NewsFeedsRepository newsFeedsRepository;
+    private NewsFeedsService newsFeedsService;
 
     @PostMapping("/post")
     public List<NewsFeeds> persist(@RequestBody NewsFeeds newsfeeds){
-        newsFeedsRepository.save(newsfeeds);
-        return newsFeedsRepository.findAll();
+        newsFeedsService.save(newsfeeds);
+        return newsFeedsService.findAll();
     }
     @GetMapping("/get")
     public List<NewsFeeds> getAll(){
-        return newsFeedsRepository.findAll();
+        return newsFeedsService.findAll();
     }
     @PutMapping("/put")
     public List<NewsFeeds> put(@PathVariable String id,@RequestBody NewsFeeds newsfeeds){
-         if(newsFeedsRepository.existsById(id)){
-            newsFeedsRepository.deleteById(id);
-            newsFeedsRepository.save(newsfeeds);
+         if(newsFeedsService.existsById(id)){
+            newsFeedsService.deleteById(id);
+            newsFeedsService.save(newsfeeds);
          }
-         return newsFeedsRepository.findAll();
+         return newsFeedsService.findAll();
     }
     @DeleteMapping("/delete")
     public List<NewsFeeds> delete(@PathVariable String id){
-            if(newsFeedsRepository.existsById(id)){
-                newsFeedsRepository.deleteById(id);
+            if(newsFeedsService.existsById(id)){
+                newsFeedsService.deleteById(id);
             }
-            return newsFeedsRepository.findAll();
+            return newsFeedsService.findAll();
     }
 }
