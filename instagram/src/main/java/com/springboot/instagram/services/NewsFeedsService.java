@@ -22,6 +22,22 @@ public class NewsFeedsService implements NewsFeedsRepository{
     private NewsFeedsRepository newsFeedsRepository;
 
     @Override
+    public List<NewsFeeds> findAll() {
+        return newsFeedsRepository.findAll();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    @Override
     public void flush() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'flush'");
@@ -93,11 +109,7 @@ public class NewsFeedsService implements NewsFeedsRepository{
         throw new UnsupportedOperationException("Unimplemented method 'saveAll'");
     }
 
-    @Override
-    public List<NewsFeeds> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
-    }
+    
 
     @Override
     public List<NewsFeeds> findAllById(Iterable<String> ids) {
