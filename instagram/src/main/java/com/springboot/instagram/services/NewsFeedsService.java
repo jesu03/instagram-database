@@ -24,12 +24,28 @@ public class NewsFeedsService implements NewsFeedsRepository{
     @Override
     public List<NewsFeeds> findAll() {
         return newsFeedsRepository.findAll();
+    } 
+
+    @Override
+    public NewsFeeds save(NewsFeeds newsFeeds) {
+        return newsFeedsRepository.save(newsFeeds);
     }
 
 
+    @Override
+    public void deleteById(String id) {
+        newsFeedsRepository.deleteById(id);
+    }
 
+    @Override
+    public boolean existsById(String id) {
+        return newsFeedsRepository.existsById(id);
+    }
 
-
+    public NewsFeeds updateById(NewsFeeds newsFeeds, String id){
+            
+            return newsFeedsRepository.save(newsFeeds);
+    }] 
 
 
 
@@ -117,11 +133,7 @@ public class NewsFeedsService implements NewsFeedsRepository{
         throw new UnsupportedOperationException("Unimplemented method 'findAllById'");
     }
 
-    @Override
-    public <S extends NewsFeeds> S save(S entity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
-    }
+    
 
     @Override
     public Optional<NewsFeeds> findById(String id) {
@@ -129,11 +141,7 @@ public class NewsFeedsService implements NewsFeedsRepository{
         throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
 
-    @Override
-    public boolean existsById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'existsById'");
-    }
+    
 
     @Override
     public long count() {
@@ -141,11 +149,7 @@ public class NewsFeedsService implements NewsFeedsRepository{
         throw new UnsupportedOperationException("Unimplemented method 'count'");
     }
 
-    @Override
-    public void deleteById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
-    }
+    
 
     @Override
     public void delete(NewsFeeds entity) {
