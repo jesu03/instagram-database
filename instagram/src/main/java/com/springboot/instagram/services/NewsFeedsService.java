@@ -27,6 +27,11 @@ public class NewsFeedsService implements NewsFeedsRepository{
     } 
 
     @Override
+    public Optional<NewsFeeds> findById(String id) {
+        return newsFeedsRepository.findById(id);
+    }
+f
+    @Override
     public NewsFeeds save(NewsFeeds newsFeeds) {
         return newsFeedsRepository.save(newsFeeds);
     }
@@ -45,7 +50,7 @@ public class NewsFeedsService implements NewsFeedsRepository{
     public NewsFeeds updateById(NewsFeeds newsFeeds, String id){
             
             return newsFeedsRepository.save(newsFeeds);
-    }] 
+    }
 
 
 
@@ -135,11 +140,7 @@ public class NewsFeedsService implements NewsFeedsRepository{
 
     
 
-    @Override
-    public Optional<NewsFeeds> findById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
-    }
+    
 
     
 
