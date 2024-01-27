@@ -30,7 +30,7 @@ public class NewsFeedsService implements NewsFeedsRepository{
     public Optional<NewsFeeds> findById(String id) {
         return newsFeedsRepository.findById(id);
     }
-f
+
     @Override
     public NewsFeeds save(NewsFeeds newsFeeds) {
         return newsFeedsRepository.save(newsFeeds);
@@ -47,8 +47,7 @@ f
         return newsFeedsRepository.existsById(id);
     }
 
-    public NewsFeeds updateById(NewsFeeds newsFeeds, String id){
-            
+    public NewsFeeds updateById(NewsFeeds newsFeeds, String id){ 
             return newsFeedsRepository.save(newsFeeds);
     }
 
